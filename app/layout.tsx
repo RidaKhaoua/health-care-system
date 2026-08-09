@@ -28,9 +28,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html
         lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
       >
-        <body className="min-h-full">
+        <body className="min-h-screen">
           {children}
           <Toaster />
           </body>
