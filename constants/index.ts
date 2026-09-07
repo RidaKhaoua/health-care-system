@@ -1,3 +1,5 @@
+import { TVariants } from "@/components/ui/StatusBadge";
+import { AppointmentStatus } from "@/lib/generated/prisma/enums";
 import {
   Bell,
   LayoutDashboard,
@@ -99,7 +101,7 @@ export const SIDEBAR_LINKS = [
       },
       {
         name: "Appointments",
-        href: "/record/appointments",
+        href: "/records/appointments",
         access: ["patient"],
         icon: ListOrdered,
       },
@@ -167,4 +169,53 @@ export const Relation = [
   { label: "Husband", value: "husband" },
   { label: "Wife", value: "wife" },
   { label: "Other", value: "other" },
+];
+
+export const APPOINTMENTS_STATUS: Record<AppointmentStatus, TVariants> = {
+  COMPLETED: "success",
+  CANCELLED: "error",
+  PENDING: "warning",
+  SCHEDULED: "default",
+};
+
+export const DAYS_OF_WEEK = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+
+export const COLUMNS_APPOINETMENTS = [
+  {
+    header: "Info",
+    key: "name",
+  },
+  {
+    header: "Date",
+    key: "appointment_date",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Time",
+    key: "time",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Doctor",
+    key: "doctor",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Status",
+    key: "status",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Action",
+    key: "action",
+    className: "hidden md:table-cell",
+  },
 ];

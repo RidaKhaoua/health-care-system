@@ -8,7 +8,7 @@ import React, { ReactNode } from "react";
 async function layout({ children }: { children: ReactNode }) {
   const role = await getRoles();
   return (
-    <div className="flex  bg-slate-100 min-h-screen">
+    <div className="flex  bg-slate-100 min-h-screen" >
       <div className=" w-[14%]  md:w-[13%] lg:w-[16%]  ">
         <SideBar  role={role.toUpperCase() as Role} />
       </div>

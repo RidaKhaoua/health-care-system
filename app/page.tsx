@@ -6,11 +6,13 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-
 async function Home() {
   const { userId } = await auth();
   const role = await getRoles();
 
+  if (userId) {
+    redirect(`/${role}`);
+  }
   
   return (
     <div className="min-h-screen  flex flex-col justify-end max-md:px-4">

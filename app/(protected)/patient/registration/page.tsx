@@ -5,7 +5,7 @@ import usePatientRegistration from "../_hooks/patient-registeration";
 import PatientForm from "@/components/PatientForm";
 
 import { Patient } from "@/lib/generated/prisma/client";
-import { getPatientData } from "@/utils/services/patient";
+import { getPatientById } from "@/utils/services/patient";
 
 async function RegistrationPage() {
   const user = await currentUser();
@@ -18,7 +18,7 @@ async function RegistrationPage() {
   } | null = null;
 
   if (user && user.id) {
-    const response = await getPatientData(user?.id);
+    const response = await getPatientById(user?.id);
     data = { ...response };
   }
 
