@@ -1,9 +1,5 @@
-import { clerkClient, currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import React from "react";
-import usePatientRegistration from "../_hooks/patient-registeration";
+import { currentUser } from "@clerk/nextjs/server";
 import PatientForm from "@/components/PatientForm";
-
 import { Patient } from "@/lib/generated/prisma/client";
 import { getPatientById } from "@/utils/services/patient";
 
@@ -14,7 +10,7 @@ async function RegistrationPage() {
     error: boolean;
     message?: string | undefined;
     data?: Patient | null;
-    status?:number | undefined
+    status?: number | undefined;
   } | null = null;
 
   if (user && user.id) {

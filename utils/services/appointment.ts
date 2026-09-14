@@ -101,6 +101,7 @@ export async function getPatientAppointments({
             },
           },
         },
+        orderBy:{appointment_date:"desc"}
       }),
       prisma.appointment.count({
         where: buildQuery(id, search),

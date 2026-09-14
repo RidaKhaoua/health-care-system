@@ -219,3 +219,12 @@ export const COLUMNS_APPOINETMENTS = [
     className: "hidden md:table-cell",
   },
 ];
+
+export const TYPES_Appointment = [
+  { label: "General Consultation", value: "General Consultation" },
+  { label: "General Check up", value: "General Check Up" },
+  { label: "Antenatal", value: "Antenatal" },
+  { label: "Maternity", value: "Maternity" },
+  { label: "Lab Test", value: "Lab Test" },
+  { label: "ANT", value: "ANT" },
+];

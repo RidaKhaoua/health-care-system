@@ -88,7 +88,7 @@ function PaginationBtn({
                 )}
                 onClick={(e) => {
                   e.preventDefault();
-                  if (currentPage < totalPages)
+                  if (currentPage <= totalPages)
                     router.push(
                       `${pathName}?${createQueryString("p", page.toString())}`,
                     );

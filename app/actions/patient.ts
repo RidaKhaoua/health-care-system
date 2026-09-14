@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { PatientFormShema } from "@/lib/schema";
 import { getErrorMessage } from "@/utils/error";
 import { clerkClient } from "@clerk/nextjs/server";
-import { success } from "zod";
+
 
 export async function createNewPatient(
   data: Omit<Patient, "id" | "colorCode" | "created_at" | "updated_at">,

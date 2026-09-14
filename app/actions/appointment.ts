@@ -1,12 +1,15 @@
 "use server";
-import { Prisma } from "@/lib/generated/prisma/client";
+import { Appointment, Prisma } from "@/lib/generated/prisma/client";
 import { AppointmentStatus } from "@/lib/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
+import { BookAppointment } from "@/lib/schema";
+
+import { getErrorMessage } from "@/utils/error";
 
 export async function AppointmentUpdateStatus(
   id: number,
   status: AppointmentStatus,
-  reason: string,
+  reason?: string,
 ) {
   try {
     if (!id) {
@@ -46,3 +49,51 @@ export async function AppointmentUpdateStatus(
     }
   }
 }
+
+export async function createAppointment(
+  data: Omit<
+    Appointment,
+    "id" | "created_at" | "updated_at" | "status" | "reason"
+  >,
+) {
+  
+  try {
+    const formatedData = {
+      doctors: data.doctor_id,
+      date: data.appointment_date,
+      appointmentType: data.type,
+      note: data.note,
+      time: data.time,
+    };
+    const dataIsValid = BookAppointment.safeParse(formatedData);
+    if (!dataIsValid.success) {
+      return {
+        success: dataIsValid.success,
+        error: dataIsValid.error,
+        message: "Provide all required fields",
+      };
+    }
+    const bookAppointment = await prisma.appointment.create({
+      data: {
+        patient_id: data.patient_id,
+        doctor_id: data.doctor_id,
+        time: data.time,
+        note: data.note,
+        status: "PENDING",
+        type: data.type,
+        appointment_date: data.appointment_date,
+      },
+    });
+    return {
+      success: true,
+      error: false,
+      data: bookAppointment,
+      status: 200,
+      message: "Book appointment with success",
+    };
+  } catch (error) {
+    return { success: false, error: true, message: getErrorMessage(error) };
+  }
+}
+
+

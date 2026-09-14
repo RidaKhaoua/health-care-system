@@ -53,7 +53,7 @@ function PatientRating({ data }: IPatientRating) {
                   
                <div className="flex items-center gap-1">
                  {Array.from({ length: item.rating }, (_, index) => (
-                  <Star className="size-4 text-yellow-400" />
+                  <Star key={index} className="size-4 text-yellow-400" />
                   
                 ))}
                 <span className="text-black">{item.rating.toFixed(1)}</span>

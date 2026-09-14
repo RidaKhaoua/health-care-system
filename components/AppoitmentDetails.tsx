@@ -1,4 +1,3 @@
-
 import {
   Dialog,
   DialogContent,
@@ -35,8 +34,9 @@ async function AppoitmentDetails({ id }: { id: number }) {
     <Dialog>
       <DialogTrigger
         render={
-          <Button className="bg-transparent">
+          <Button className="hover:bg-slate-100 flex items-center justify-start bg-transparent">
             <Eye className="size-4" />
+            <span>View Details</span>
           </Button>
         }
       />
@@ -165,18 +165,14 @@ async function AppoitmentDetails({ id }: { id: number }) {
             </div>
           </div>
           {/* Appointment Action */}
-           <div className="">
-              <h3 className="font-bold mb-3">Perform Action</h3>
-              {/* Appoitment action */}
-              <AppointementAction id={data.id} status={data.status} />
-            </div>
-          {(await getRoles()) === "admin" || data.doctor_id === userId ? (
-            <div className="">
-              <h3 className="font-bold">Perform Action</h3>
-              {/* Appoitment action */}
-              {/* <AppointementAction id={data.id} status={data.status} /> */}
-            </div>
-          ) : null}
+          {/* Appoitment action */}
+            {(await getRoles()) === "admin" || data.doctor_id === userId ? (
+              <div className="">
+                <h3 className="font-bold">Perform Action</h3>
+                {/* Appoitment action */}
+                <AppointementAction id={data.id} status={data.status} />
+              </div>
+            ) : null}
         </>
       </DialogContent>
     </Dialog>

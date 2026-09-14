@@ -96,7 +96,6 @@ const usePatientRegistration = (data?: Patient | null) => {
             type: "success",
           });
         } else {
-          alert("from else");
           toast.add({
             title: "error",
             description: response.message,

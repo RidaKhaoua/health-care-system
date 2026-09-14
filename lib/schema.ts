@@ -109,5 +109,31 @@ export const PatientFormShema = z.object({
   img: z.string().optional(),
 });
 
+const shemaOption = z.object({
+  label: z.string,
+  value: z.string,
+});
+
+export const BookAppointment = z.object({
+  doctors: z.string().min(1, { message: "doctors is required" }),
+  date: z
+    .date({ message: "Date is required" })
+    .transform((date) => new Date(date))
+    .refine((date) => !isNaN(date.getTime()), {
+      message: "Invalid date of birth",
+    }),
+  time: z.string().min(1, { message: "Time is required" }),
+  note: z
+    .string()
+
+    .max(500, { message: "The Adress must be at most 500" })
+    .optional(),
+  appointmentType: z
+    .string()
+    .min(1, { message: "Type Appointment is required" }),
+});
+
 export type TPatientFormInput = z.input<typeof PatientFormShema>;
-export type TPatientForm = z.output<typeof PatientFormShema>; // ولا z.infer, بحال بحال
+export type TPatientForm = z.output<typeof PatientFormShema>;
+export type TBookAppointmentInput = z.input<typeof BookAppointment>;
+export type TBookAppointment = z.output<typeof BookAppointment>;

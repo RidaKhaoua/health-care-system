@@ -90,7 +90,7 @@ export async function getPatientById(id: string) {
   } catch (error) {
     return {
       success: false,
-      error: false,
+      error: true,
       message: "Internel Server error",
       status: 500,
     };
@@ -216,6 +216,60 @@ export async function getPatientDashboard(id: string) {
       error: true,
       status: 500,
       message: "Internal Serveur 500",
+    };
+  }
+}
+
+export async function getPatientFullDataById(id: string) {
+  try {
+    const patient = await prisma.patient.findFirst({
+      where: {
+        OR: [{ id }, { email: id }],
+      },
+      include: {
+        _count: {
+          select: {
+            appointments: true,
+          },
+        },
+        appointments: {
+          select: {
+            appointment_date: true,
+          },
+          orderBy: {
+            appointment_date: "desc",
+          },
+          take: 1,
+        },
+      },
+    });
+    if (!patient) {
+      return {
+        success: false,
+        error: false,
+        message: "Patient data Not Found",
+        data: null,
+        status: 404,
+      };
+    }
+    const lastVisit = patient.appointments[0]?.appointment_date || null;
+    return {
+      success: true,
+      error: false,
+      message: "Patient data Not Found",
+      data: {
+        ...patient,
+        totalAppointments: patient._count.appointments,
+        lastVisit,
+      },
+      status: 200,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: true,
+      message: "Internal Server Error",
+      status: 500,
     };
   }
 }
