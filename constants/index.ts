@@ -71,19 +71,19 @@ export const SIDEBAR_LINKS = [
       },
       {
         name: "Appointments",
-        href: "/record/appointments",
+        href: "/records/appointments",
         access: ["admin", "doctor", "nurse"],
         icon: ListOrdered,
       },
       {
         name: "Medical Records",
-        href: "/record/medical-records",
+        href: "/records/medical-records",
         access: ["admin", "doctor", "nurse"],
         icon: SquareActivity,
       },
       {
         name: "Billing Overview",
-        href: "/record/billing",
+        href: "/records/billing",
         access: ["admin", "doctor"],
         icon: Receipt,
       },
@@ -220,6 +220,28 @@ export const COLUMNS_APPOINETMENTS = [
   },
 ];
 
+export const COLUMNS_MEDICALRECORDS = [
+  {
+    header: "Date & TIME",
+    key: "date_time",
+  },
+  {
+    header: "DOCTOR",
+    key: "doctor",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "DIAGNOSIS",
+    key: "diagnosis",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "LAB TEST",
+    key: "lab_test",
+    className: "hidden md:table-cell",
+  },
+];
+
 export const TYPES_Appointment = [
   { label: "General Consultation", value: "General Consultation" },
   { label: "General Check up", value: "General Check Up" },
@@ -228,3 +250,4 @@ export const TYPES_Appointment = [
   { label: "Lab Test", value: "Lab Test" },
   { label: "ANT", value: "ANT" },
 ];
+

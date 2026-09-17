@@ -42,6 +42,13 @@ export interface IPatientAppointments {
     date_of_birth: Date;
     phone: string;
     img: string | null;
-    gender:Gender
+    gender: Gender;
   };
+}
+
+export interface IMedicalRecords {
+  date_time: string;
+  doctor: string;
+  labTest: string;
+  diagnosis:string;
 }

@@ -9,14 +9,17 @@ function SearchInput() {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const searchDebounce = useSearchDebounce(search);
+  const searchParams = useSearchParams()
   const pathName = usePathname();
     
   useEffect(() => {
-    const params = new URLSearchParams();
-    if (searchDebounce.length > 0) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (searchDebounce.trim().length > 0) {
+      console.log(params)
+      params.delete("p")
       params.set("q", searchDebounce);
       router.push(pathName + "?" + params.toString());
-    } else {
+    } else if(searchDebounce.length === 0) {
       params.delete("q");
       router.push(pathName + "?" + params.toString());
     }

@@ -3,7 +3,7 @@
 import { useAuth, UserButton } from "@clerk/nextjs";
 import { Bell } from "lucide-react";
 import { usePathname } from "next/navigation";
-import React, { useCallback } from "react";
+import  { useCallback } from "react";
 
 function Navbar() {
   const path = usePathname();

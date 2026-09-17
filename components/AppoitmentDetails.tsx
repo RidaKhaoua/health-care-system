@@ -25,7 +25,14 @@ import { auth } from "@clerk/nextjs/server";
 import { getRoles } from "@/utils/roles";
 import AppointementAction from "./AppointementAction";
 
-async function AppoitmentDetails({ id }: { id: number }) {
+interface IAppointmentDetailsProps {
+  id: number;
+  isTextShowed?: boolean;
+}
+async function AppoitmentDetails({
+  id,
+  isTextShowed = false,
+}: IAppointmentDetailsProps) {
   const { data } = await getAppointmentById(id);
   if (!data) return null;
   const { userId } = await auth();
@@ -36,7 +43,7 @@ async function AppoitmentDetails({ id }: { id: number }) {
         render={
           <Button className="hover:bg-slate-100 flex items-center justify-start bg-transparent">
             <Eye className="size-4" />
-            <span>View Details</span>
+            {isTextShowed ? <span>View Details</span> : null}
           </Button>
         }
       />
@@ -166,13 +173,13 @@ async function AppoitmentDetails({ id }: { id: number }) {
           </div>
           {/* Appointment Action */}
           {/* Appoitment action */}
-            {(await getRoles()) === "admin" || data.doctor_id === userId ? (
-              <div className="">
-                <h3 className="font-bold">Perform Action</h3>
-                {/* Appoitment action */}
-                <AppointementAction id={data.id} status={data.status} />
-              </div>
-            ) : null}
+          {(await getRoles()) === "admin" || data.doctor_id === userId ? (
+            <div className="">
+              <h3 className="font-bold">Perform Action</h3>
+              {/* Appoitment action */}
+              <AppointementAction id={data.id} status={data.status} />
+            </div>
+          ) : null}
         </>
       </DialogContent>
     </Dialog>

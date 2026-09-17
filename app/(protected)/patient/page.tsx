@@ -64,7 +64,7 @@ async function PatientPage() {
             <Link href={"/patient/self"}>
               <Button
                 variant="outline"
-                className="text-black cursor-pointer bg-white!"
+                className="text-black cursor-pointer bg-white! hover:text-white! hover:bg-black! "
               >
                 View Profile
               </Button>
