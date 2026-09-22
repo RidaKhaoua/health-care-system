@@ -8,15 +8,16 @@ interface ITable<T> {
   renderRow: (item: T) => ReactNode;
   data: T[] | null | undefined;
   className?: string;
+  isShowedProfileDoctor?:boolean
 }
 
-function Table<T>({ columns, renderRow, data, className }: ITable<T>) {
+function Table<T>({ columns, renderRow, data, className, isShowedProfileDoctor }: ITable<T>) {
   return (
     <div>
       <table className={cn("w-full mt-4 [&_td]:py-4", className)}>
         <thead>
           <tr className="text-left text-slate-500 text-sm lg:uppercase">
-            {columns.map((item) => (
+            {columns.map((item) => item.header.toLowerCase() === "doctor" && !isShowedProfileDoctor  ? null : (
               <th key={item.key} className={item.className}>
                 {item.header}
               </th>

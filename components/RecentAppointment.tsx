@@ -21,30 +21,41 @@ import Link from "next/link";
 import CardAppointment from "./CardAppointment";
 interface IRecentAppointments {
   data: IRecentAppointment[];
+  isShowedProfileDoctor: boolean;
 }
 
-function RecentAppointment({ data }: IRecentAppointments) {
+function RecentAppointment({
+  data,
+  isShowedProfileDoctor,
+}: IRecentAppointments) {
   // const router = useRouter();
   const renderData = (item: IRecentAppointment) => {
     return (
       <tr key={uuidv4()} className="text-black even:bg-slate-100 mb-4 ">
-        <td>
-          <div className="flex items-center gap-3">
-            <ProfileImage
-              name={item.patientFirstName + " " + item.patientLastName}
-            />
-            <div className="px-2">
-              <p className="">
-                {item.patientFirstName} {item.patientLastName}
-              </p>
-              <p className="text-sm text-slate-400 lowercase">{item.gender}</p>
+        
+         <td>
+            <div className="flex items-center gap-3">
+              <ProfileImage
+                name={item.patientFirstName + " " + item.patientLastName}
+              />
+              <div className="px-2">
+                <p className="">
+                  {item.patientFirstName} {item.patientLastName}
+                </p>
+                <p className="text-sm text-slate-400 lowercase">
+                  {item.gender}
+                </p>
+              </div>
             </div>
-          </div>
-        </td>
+
+            </td>
+          
+        
 
         <td>{format(new Date(item.dateAppointment), "MM/dd/yyyy")}</td>
         <td>{item.time}</td>
-        <td>
+        {isShowedProfileDoctor ? (
+            <td>
           <div className="flex items-center gap-3">
             <ProfileImage name={item.doctorName} />
             <div className="">
@@ -52,6 +63,7 @@ function RecentAppointment({ data }: IRecentAppointments) {
             </div>
           </div>
         </td>
+          ) : null}
         <td>
           <StatusBadge
             variants={APPOINTMENTS_STATUS[item.status]}
@@ -83,6 +95,7 @@ function RecentAppointment({ data }: IRecentAppointments) {
         columns={COLUMNS_APPOINETMENTS}
         renderRow={renderData}
         data={data}
+        isShowedProfileDoctor={isShowedProfileDoctor}
       />
       {/* Card  AppointementPatient*/}
       <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 mt-4 md:hidden">
