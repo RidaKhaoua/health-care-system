@@ -3,7 +3,7 @@ import { Role } from "@/lib/generated/prisma/enums";
 import { SignOutButton } from "@clerk/nextjs";
 import { ActivitySquare, LogOut, LucideIcon } from "lucide-react";
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import React, { memo, ReactNode } from "react";
 import Lien from "./Link";
 import { SIDEBAR_LINKS } from "@/constants";
 import { usePathname } from "next/navigation";

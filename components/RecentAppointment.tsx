@@ -3,19 +3,9 @@ import { Button } from "./ui/button";
 import { IRecentAppointment } from "@/types/data-type";
 import Table from "./tables/Table";
 import { format } from "date-fns";
-import { Calendar, Clock, EllipsisIcon, Eye, User } from "lucide-react";
 import StatusBadge from "./ui/StatusBadge";
 import { APPOINTMENTS_STATUS, COLUMNS_APPOINETMENTS } from "@/constants";
 import ProfileImage from "./ProfileImage";
-import Avatar from "../assets/avatar.jpeg";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-
 import AppoitmentDetails from "./AppoitmentDetails";
 import Link from "next/link";
 import CardAppointment from "./CardAppointment";

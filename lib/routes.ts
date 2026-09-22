@@ -7,13 +7,13 @@ type RouteAccessProps = {
 
 export const routeAccess: RouteAccessProps = {
   "/admin(.*)": [Role.ADMIN],
-  "/patient(.*)": [Role.PATIENT, Role.ADMIN, Role.DOCTOR, Role.NURSE],
-  "doctor(.*)": [Role.DOCTOR],
+  "/patient(.*)": [Role.PATIENT],
+  "/doctor(.*)": [Role.DOCTOR],
   "/staf(.*)": [Role.NURSE, Role.LAB_TECHNICIAN, Role.CASHIER],
-  "/record/users": [Role.ADMIN],
-  "/record/doctors": [Role.ADMIN, Role.DOCTOR],
-  "/record/stafs": [Role.ADMIN, Role.DOCTOR],
-  "/record/patients": [Role.ADMIN, Role.DOCTOR, Role.NURSE],
+  "/records/users": [Role.ADMIN],
+  "/records/doctors": [Role.ADMIN, Role.DOCTOR],
+  "/records/stafs": [Role.ADMIN, Role.DOCTOR],
+  "/records/patients": [Role.ADMIN, Role.DOCTOR, Role.NURSE],
   "/patient/regisrations": [Role.PATIENT],
 };
 

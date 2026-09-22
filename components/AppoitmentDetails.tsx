@@ -167,13 +167,13 @@ async function AppoitmentDetails({ id, showTextDetails=false }: { id: number, sh
           </div>
          
           {/* Appoitment action */}
-            {(await getRoles()) === "admin" || data.doctor_id === userId ? (
-              <div className="">
-                <h3 className="font-bold">Perform Action</h3>
-                {/* Appoitment action */}
-                <AppointementAction id={data.id} status={data.status} />
-              </div>
-            ) : null}
+          {(await getRoles()) === "admin" || data.doctor_id === userId ? (
+            <div className="">
+              <h3 className="font-bold">Perform Action</h3>
+              {/* Appoitment action */}
+              <AppointementAction id={data.id} status={data.status} />
+            </div>
+          ) : null}
         </>
       </DialogContent>
     </Dialog>

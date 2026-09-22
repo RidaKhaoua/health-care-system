@@ -1,4 +1,4 @@
-import { Briefcase, Check, RotateCwFadingClock, ShieldX } from "lucide-react";
+import { Briefcase, BriefcaseMedical, Check, RotateCwFadingClock, ShieldX, User, Users2 } from "lucide-react";
 
 interface IAppointementStats {
   pending: number;
@@ -41,6 +41,51 @@ export const appointementStats = ({
       note: completed,
       icon: Check,
       subtitle: "Total Completed",
+      iconClassName: "bg-green-300 text-green-500",
+    },
+  ];
+};
+
+interface IDoctorStats {
+  patient:number,
+  nurses: number,
+  appointements: number,
+  consultation: number
+}
+
+export const doctorStats = ({
+  patient,
+  nurses,
+  appointements,
+  consultation
+}: IDoctorStats) => {
+  return [
+    {
+      title: "Patients",
+      note: patient,
+      icon: Users2,
+      subtitle: "Total patients",
+      iconClassName: "bg-blue-300 text-blue-500",
+    },
+    {
+      title: "Nurses",
+      note: nurses,
+      icon: User,
+      subtitle: "Total nurses",
+      iconClassName: "bg-red-300 text-red-500",
+    },
+    {
+      title: "Appointements",
+      note: appointements,
+      icon: Briefcase,
+      subtitle: "Total appointements",
+      iconClassName: "bg-orange-300 text-orange-500",
+    },
+    {
+      title: "Consultation",
+      note: BriefcaseMedical,
+      icon: Check,
+      subtitle: "Total Consultation",
       iconClassName: "bg-green-300 text-green-500",
     },
   ];
