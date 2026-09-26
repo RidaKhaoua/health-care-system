@@ -25,7 +25,12 @@ import { auth } from "@clerk/nextjs/server";
 import { getRoles } from "@/utils/roles";
 import AppointementAction from "./AppointementAction";
 
-async function AppoitmentDetails({ id, showTextDetails=false }: { id: number, showTextDetails?:boolean }) {
+interface IAppointmentDetailsProps {
+  id:number;
+  showTextDetails?:boolean
+}
+
+async function AppoitmentDetails({ id, showTextDetails=false }: IAppointmentDetailsProps) {
   const { data } = await getAppointmentById(id);
   if (!data) return null;
   const { userId } = await auth();

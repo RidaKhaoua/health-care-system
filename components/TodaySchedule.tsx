@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "./ui/card";
-import {  User } from "lucide-react";
+import {  Timer, User } from "lucide-react";
 import ProfileImage from "./ProfileImage";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ function TodaySchedule({ data }: ITodayScheduleProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-xl text-black">Today Schedule</h3>
-          <Link href={"/record"} className="text-slate-400 hover:underline">
+          <Link href={"/records/schedule"} className="text-slate-400 hover:underline">
             View All
           </Link>
         </div>
@@ -55,8 +55,8 @@ function TodaySchedule({ data }: ITodayScheduleProps) {
           ))
         ) : (
           <div className="h-40 flex flex-col gap-4 items-center justify-center text-slate-500">
-            <User className="size-10" />
-            <p className="text-md">No Doctor avaialable now!</p>
+            <Timer className="size-10" />
+            <p className="text-md">No Schedule avaialable Today!</p>
           </div>
         )}
       </CardContent>

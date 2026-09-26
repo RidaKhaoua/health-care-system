@@ -1,4 +1,5 @@
 import { AppointmentStatus, Gender } from "@/lib/generated/prisma/enums";
+import { IPatient } from "./patient-type";
 
 export interface IAppointementsChartProps {
   name: string;
@@ -46,9 +47,19 @@ export interface IPatientAppointments {
   };
 }
 
+export interface IPatientsOfToday {
+  patient: IPatient;
+  id: number;
+  patient_id: string;
+  doctor_id: string;
+  appointment_date: Date;
+  time: string;
+  status: AppointmentStatus;
+}
+
 export interface IMedicalRecords {
   date_time: string;
   doctor: string;
   labTest: string;
-  diagnosis:string;
+  diagnosis: string;
 }

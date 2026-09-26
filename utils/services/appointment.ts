@@ -101,7 +101,7 @@ export async function getPatientAppointments({
             },
           },
         },
-        orderBy:{appointment_date:"desc"}
+        orderBy: { appointment_date: "desc" },
       }),
       prisma.appointment.count({
         where: buildQuery(id, search),
@@ -118,7 +118,7 @@ export async function getPatientAppointments({
       };
     }
     const totalPages = Math.ceil(totalRecord / LIMIT);
-      
+
     return {
       success: true,
       error: false,
@@ -150,8 +150,8 @@ function buildQuery(id?: string, search?: string) {
                   first_name: { contains: search, mode: "insensitive" },
                 },
                 {
-                  last_name:{contains:search, mode:"insensitive"}
-                }
+                  last_name: { contains: search, mode: "insensitive" },
+                },
               ],
             },
           },
@@ -163,7 +163,7 @@ function buildQuery(id?: string, search?: string) {
         ],
       }
     : {};
-
+  // TODO: should check in the first which role and based on the role we make the filtration
   const idCondition: AppointmentWhereInput = id
     ? {
         OR: [

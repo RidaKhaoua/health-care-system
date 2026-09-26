@@ -40,6 +40,12 @@ export const SIDEBAR_LINKS = [
         access: ["patient"],
         icon: User,
       },
+      {
+        name: "Profile",
+        href: "/doctor/self",
+        access: ["doctor"],
+        icon: User,
+      },
     ],
   },
   {
@@ -219,6 +225,25 @@ export const COLUMNS_APPOINETMENTS = [
     className: "hidden md:table-cell",
   },
 ];
+
+export const COLUMNS_SCHEDULE = [
+  {
+    header:"FullName",
+    key:"fullName",
+  },
+  {
+    header:"Date",
+    key:"date",
+  },
+  {
+    header:"Status",
+    key:"status",
+  },
+  {
+    header: "Action",
+    key:"action"
+  }
+]
 
 export const COLUMNS_MEDICALRECORDS = [
   {

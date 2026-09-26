@@ -5,14 +5,11 @@ import PatientRating from "@/components/PatientRating";
 import RecentAppointment from "@/components/RecentAppointment";
 import UserGreeting from "@/components/shared/UserGreeting";
 import StatsCard from "@/components/StatsCard";
-import { Button } from "@/components/ui/button";
 import { IRecentAppointment } from "@/types/data-type";
 import { appointementStats } from "@/utils/appointements-stats";
 import { requireUser } from "@/utils/get-current-user";
 import { getPatientDashboard } from "@/utils/services/patient";
-import Link from "next/link";
 import { redirect } from "next/navigation";
-import { useMemo } from "react";
 
 async function PatientPage() {
   const user = await requireUser();
@@ -50,34 +47,9 @@ async function PatientPage() {
     <div className="flex flex-col xl:flex-row p-2 xl:p-4 gap-6 xl:gap-4">
       {/* LEFT */}
       <div className=" w-full xl:w-[69%] space-y-10 ">
-<<<<<<< HEAD
         <UserGreeting
           fullName={`${data?.patient.first_name} ${data?.patient.last_name}`}
         />
-=======
-        <div className="flex justify-between items-center ">
-          <h1 className="text-sm xl:text-2xl font-bold text-black flex gap-1.5 items-center">
-            <span>Welcome</span>
-            <span>
-              {data?.patient.first_name || user.firstName}
-              {data?.patient.last_name || user.lastName}
-            </span>
-          </h1>
-          <div className="flex items-center gap-2">
-            <Button variant="secondary" className="hover:bg-black/30">
-              {new Date().getFullYear()}
-            </Button>
-            <Link href={"/patient/self"}>
-              <Button
-                variant="outline"
-                className="text-black cursor-pointer bg-white! hover:text-white! hover:bg-black! "
-              >
-                View Profile
-              </Button>
-            </Link>
-          </div>
-        </div>
->>>>>>> 908f8c7ab2973bd99c8b161b3cd70fc388d33797
         <div className="flex items-center gap-3 flex-wrap">
           {appointementStat.map((item) => (
             <StatsCard

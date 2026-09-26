@@ -13,13 +13,13 @@ import { Briefcase, CheckCheck, Database, Users, X } from "lucide-react";
 async function DoctorPage() {
   const user = await requireUser();
 
-  const response = await getDoctorDashboard(user?.id);
+  const response = await getDoctorDashboard(user.id);
   //TODO: if user doesn't register redirect into register page
   if (!response.data) {
     return (
       <div className="min-h-screen flex items-center justify-center text-slate-400">
-        <div className="space-y-4">
-          <Database className="siize-10" />
+        <div className="space-y-4 flex flex-col justify-center items-center">
+          <Database className="siize-20" />
           <p>{response.message}</p>
         </div>
       </div>

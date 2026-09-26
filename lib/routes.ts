@@ -11,7 +11,7 @@ export const routeAccess: RouteAccessProps = {
   "/doctor(.*)": [Role.DOCTOR],
   "/staf(.*)": [Role.NURSE, Role.LAB_TECHNICIAN, Role.CASHIER],
   "/records/users": [Role.ADMIN],
-  "/records/doctors": [Role.ADMIN, Role.DOCTOR],
+  "/records/doctors": [Role.ADMIN],
   "/records/stafs": [Role.ADMIN, Role.DOCTOR],
   "/records/patients": [Role.ADMIN, Role.DOCTOR, Role.NURSE],
   "/patient/regisrations": [Role.PATIENT],
