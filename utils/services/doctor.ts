@@ -172,22 +172,31 @@ export async function getDoctorProfile(id: string) {
         license_number: true,
         phone: true,
         img: true,
+        availability_status: true,
+        created_at: true,
         working_days: true,
-        ratings: true,
+        ratings: {
+          select: {
+            rating: true,
+          },
+        },
         appointments: {
           select: {
             id: true,
             status: true,
             appointment_date: true,
+            time:true,
             patient: {
               select: {
                 id: true,
                 first_name: true,
                 last_name: true,
                 img: true,
+                gender:true,
               },
             },
           },
+          take:5,
           orderBy: {
             appointment_date: "desc",
           },
@@ -204,11 +213,75 @@ export async function getDoctorProfile(id: string) {
         status: 404,
       };
     }
-
+    const averageRating =
+      data.ratings.length > 0
+        ? data.ratings.reduce((acc, item) => item.rating + acc, 0) /
+          data.ratings.length
+        : 0;
     return {
       success: true,
       error: false,
-      data,
+      data: {
+        ...data,
+        ratings: averageRating.toFixed(1),
+      },
+      status: 200,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: true,
+      message: "Internal server error",
+      status: 500,
+    };
+  }
+}
+
+export async function getRatingDoctorById(id: string) {
+  try {
+    if (!id) {
+      return {
+        success: false,
+        error: true,
+        message: "Data Not Found",
+        status: 404,
+      };
+    }
+    const [stats, patientRatings] = await prisma.$transaction([
+      prisma.rating.aggregate({
+        where: {
+          staff_id: id,
+        },
+        _avg: {
+          rating: true,
+        },
+        _count: {
+          rating: true,
+        },
+      }),
+      prisma.rating.findMany({
+        where: { staff_id: id },
+        include: {
+          patient: {
+            select: { id: true, last_name: true, first_name: true, img: true },
+          },
+        },
+        take: 5,
+        orderBy: { id: "desc" },
+      }),
+    ]);
+
+    const averageRating = stats._avg.rating
+      ? (Math.round(stats._avg.rating * 10) / 10).toFixed(1)
+      : "0.0";
+    return {
+      success: true,
+      error: false,
+      data: {
+        totalRating: stats._count.rating,
+        averageRating: Number(averageRating),
+        patientRatings,
+      },
       status: 200,
     };
   } catch (error) {

@@ -47,7 +47,7 @@ function RecentAppointment({
         {isShowedProfileDoctor ? (
             <td>
           <div className="flex items-center gap-3">
-            <ProfileImage name={item.doctorName} />
+            <ProfileImage name={item.doctorName!} />
             <div className="">
               <p className="">{item.doctorName}</p>
             </div>
@@ -81,12 +81,15 @@ function RecentAppointment({
           </Button>
         </Link>
       </div>
+      <div className="hidden lg:block">
       <Table
         columns={COLUMNS_APPOINETMENTS}
         renderRow={renderData}
         data={data}
         isShowedProfileDoctor={isShowedProfileDoctor}
       />
+
+      </div>
       {/* Card  AppointementPatient*/}
       <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 mt-4 md:hidden">
         {data.map((item) => (
@@ -94,7 +97,7 @@ function RecentAppointment({
             img={item.img}
             fullName={item.patientFirstName + " " + item.patientLastName}
             dateAppointment={item.dateAppointment}
-            doctorName={item.doctorName}
+            doctorName={item.doctorName!}
             status={item.status}
             key={uuidv4()}
           />

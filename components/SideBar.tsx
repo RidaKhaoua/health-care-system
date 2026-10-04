@@ -15,7 +15,7 @@ interface ISideBar {
 
 function SideBar({  role }: ISideBar) {
     const path = usePathname();
-    console.log(path)
+    
   return (
     <div className="flex flex-col justify-between h-full border-r border-slate-300 overflow-y-auto">
       <div>

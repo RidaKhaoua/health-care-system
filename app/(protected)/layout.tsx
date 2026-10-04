@@ -15,7 +15,7 @@ async function layout({ children }: { children: ReactNode }) {
       <div className="w-[84%] md:w-[92%] lg:w-[86%] bg-[#F7F8FA]">
         {/* Navbar */}
         <Navbar />
-        <div className=" p-2 ">{children}</div>
+        <div className=" p-2">{children}</div>
       </div>
     </div>
   );

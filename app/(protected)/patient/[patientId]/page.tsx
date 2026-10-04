@@ -22,7 +22,7 @@ async function PatientProfile(props: ParamsProps) {
   let patientId = params.patientId;
   const cat = searchParams?.cat || "medical-history";
 
-  if (patientId === "self") {
+  if (patientId.trim().toLowerCase() === "self") {
     const { userId } = await auth();
     id = userId!;
   } else {

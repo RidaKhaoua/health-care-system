@@ -106,7 +106,7 @@ async function Appointments({
           />
           <PopoverContent className="bg-white! text-black flex flex-col items-stretch">
             <AppoitmentDetails id={item.id} showTextDetails={true} />
-            {item.status !== "SCHEDULED" && (
+            {item.status !== "COMPLETED" && (
               <AppointmentActionDialog
                 id={item.id}
                 disabled={false}

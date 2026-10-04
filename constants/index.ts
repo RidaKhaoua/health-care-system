@@ -184,6 +184,11 @@ export const APPOINTMENTS_STATUS: Record<AppointmentStatus, TVariants> = {
   SCHEDULED: "default",
 };
 
+export const DOCTOR_STATUS: Record<"ACTIVE" | "BLOCKED", TVariants> = {
+  ACTIVE: "success",
+  BLOCKED: "error",
+};
+
 export const DAYS_OF_WEEK = [
   "Monday",
   "Tuesday",
@@ -228,22 +233,22 @@ export const COLUMNS_APPOINETMENTS = [
 
 export const COLUMNS_SCHEDULE = [
   {
-    header:"FullName",
-    key:"fullName",
+    header: "FullName",
+    key: "fullName",
   },
   {
-    header:"Date",
-    key:"date",
+    header: "Date",
+    key: "date",
   },
   {
-    header:"Status",
-    key:"status",
+    header: "Status",
+    key: "status",
   },
   {
     header: "Action",
-    key:"action"
-  }
-]
+    key: "action",
+  },
+];
 
 export const COLUMNS_MEDICALRECORDS = [
   {
@@ -275,4 +280,3 @@ export const TYPES_Appointment = [
   { label: "Lab Test", value: "Lab Test" },
   { label: "ANT", value: "ANT" },
 ];
-

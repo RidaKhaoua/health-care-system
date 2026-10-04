@@ -10,10 +10,10 @@ export interface IAppointementsChartProps {
 export interface IRecentAppointment {
   id: number;
   patient_Id: string;
-  docotr_Id: string;
+  docotr_Id?: string;
   patientFirstName: string;
   patientLastName: string;
-  doctorName: string;
+  doctorName?: string;
   time: string;
   dateAppointment: Date;
   gender: Gender;
