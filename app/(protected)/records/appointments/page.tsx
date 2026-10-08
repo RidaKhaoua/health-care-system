@@ -147,6 +147,7 @@ async function Appointments({
           columns={COLUMNS_APPOINETMENTS}
           data={data}
           renderRow={renderData}
+          isShowedProfileDoctor={true}
         />
 
         {data === null ? (

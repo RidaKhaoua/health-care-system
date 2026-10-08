@@ -52,12 +52,6 @@ export const SIDEBAR_LINKS = [
     label: "Manage",
     links: [
       {
-        name: "Users",
-        href: "/records/users",
-        access: ["admin"],
-        icon: Users,
-      },
-      {
         name: "Doctors",
         href: "/records/doctors",
         access: ["admin"],
@@ -280,3 +274,74 @@ export const TYPES_Appointment = [
   { label: "Lab Test", value: "Lab Test" },
   { label: "ANT", value: "ANT" },
 ];
+
+export const COLUMNS_PATIENTS = [
+  {
+    header: "FullName",
+    key: "fullname",
+  },
+  {
+    header: "Register Date",
+    key: "register_date",
+  },
+  {
+    header: "Phone",
+    key: "phone",
+  },
+  {
+    header: "Email",
+    key: "email",
+  },
+  {
+    header: "Marital Status",
+    key: "marital_status",
+  },
+  {
+    header: "Status",
+    key: "status",
+  },
+
+  {
+    header: "Action",
+    key: "action",
+    className: "hidden md:table-cell",
+  },
+];
+
+export const COLUMNS_DOCTORS = [
+  {
+    header: "FullName",
+    key: "fullname",
+  },
+  {
+    header: "Specialiste",
+    key: "speacialiste",
+  },
+  {
+    header: "Register Date",
+    key: "register_date",
+  },
+  {
+    header: "Phone",
+    key: "phone",
+  },
+  {
+    header: "Email",
+    key: "email",
+  },
+  {
+    header: "Status",
+    key: "status",
+  },
+
+  {
+    header: "Action",
+    key: "action",
+    className: "hidden md:table-cell",
+  },
+];
+
+export const USER_STATUS_COLOR: Record<string, TVariants> = {
+  true: "error",
+  false: "success",
+};

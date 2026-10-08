@@ -63,3 +63,4 @@ export interface IMedicalRecords {
   labTest: string;
   diagnosis: string;
 }
+
