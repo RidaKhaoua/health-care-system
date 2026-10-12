@@ -3,9 +3,9 @@ import SideBar from "@/components/SideBar";
 import { SIDEBAR_LINKS } from "@/constants";
 import { Role } from "@/lib/generated/prisma/enums";
 import { getRoles } from "@/utils/roles";
-import React, { ReactNode, useCallback } from "react";
+import  { ReactNode } from "react";
 
-async function layout({ children }: { children: ReactNode }) {
+async function ProtectedLayout({ children }: { children: ReactNode }) {
   const role = await getRoles();
   return (
     <div className="flex  bg-slate-100 min-h-screen">
@@ -21,4 +21,4 @@ async function layout({ children }: { children: ReactNode }) {
   );
 }
 
-export default layout;
+export default ProtectedLayout;

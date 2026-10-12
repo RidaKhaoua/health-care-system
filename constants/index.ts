@@ -42,7 +42,7 @@ export const SIDEBAR_LINKS = [
       },
       {
         name: "Profile",
-        href: "/doctor/self",
+        href: "/records/doctors/self",
         access: ["doctor"],
         icon: User,
       },

@@ -1,9 +1,10 @@
 import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
-import { Ellipsis } from "lucide-react";
+import { Ellipsis, Eye } from "lucide-react";
 import DeleteRecord from "./shared/DeleteRecord";
 import { deleteDoctor } from "@/utils/services/admin";
+import Link from "next/link";
 
 interface IDoctorActionsProps {
   id: string;
@@ -21,6 +22,12 @@ function DoctorActions({ id, status }: IDoctorActionsProps) {
         }
       />
       <PopoverContent className="bg-white! text-black flex flex-col items-stretch">
+        <Link href={`/records/doctors/${id}`}>
+          <Button>
+            <Eye className="size-4" />
+            View Details
+          </Button>
+        </Link>
         <DeleteRecord
           id={id}
           handleDeleteRecord={deleteDoctor}
