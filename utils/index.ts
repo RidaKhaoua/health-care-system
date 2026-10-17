@@ -103,3 +103,22 @@ export const processAppointments = async (appointments: IAppointment[]) => {
 
   return { appointmentStatusCounts, monthlyData };
 };
+
+export function getPagintationParams(
+  page?: string | number,
+  limit?: string | number,
+) {
+  const PAGE_NUMBBER = Number(page) < 0 ? "1" : page ? page : "1";
+  const LIMIT = Number(limit) || 10;
+  const SKIP = (Number(PAGE_NUMBBER) - 1) * LIMIT;
+  return {
+    page: PAGE_NUMBBER,
+    limit: LIMIT,
+    skip: SKIP,
+  };
+}
+
+
+export function getTotalPage(totalRecord:number, limit:number ) {
+  return Math.ceil(totalRecord /limit);
+}

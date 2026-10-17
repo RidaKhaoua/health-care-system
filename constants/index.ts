@@ -42,7 +42,7 @@ export const SIDEBAR_LINKS = [
       },
       {
         name: "Profile",
-        href: "/doctor/self",
+        href: "/records/doctors/self",
         access: ["doctor"],
         icon: User,
       },
@@ -51,12 +51,6 @@ export const SIDEBAR_LINKS = [
   {
     label: "Manage",
     links: [
-      {
-        name: "Users",
-        href: "/records/users",
-        access: ["admin"],
-        icon: Users,
-      },
       {
         name: "Doctors",
         href: "/records/doctors",
@@ -184,6 +178,11 @@ export const APPOINTMENTS_STATUS: Record<AppointmentStatus, TVariants> = {
   SCHEDULED: "default",
 };
 
+export const DOCTOR_STATUS: Record<"ACTIVE" | "BLOCKED", TVariants> = {
+  ACTIVE: "success",
+  BLOCKED: "error",
+};
+
 export const DAYS_OF_WEEK = [
   "Monday",
   "Tuesday",
@@ -228,22 +227,22 @@ export const COLUMNS_APPOINETMENTS = [
 
 export const COLUMNS_SCHEDULE = [
   {
-    header:"FullName",
-    key:"fullName",
+    header: "FullName",
+    key: "fullName",
   },
   {
-    header:"Date",
-    key:"date",
+    header: "Date",
+    key: "date",
   },
   {
-    header:"Status",
-    key:"status",
+    header: "Status",
+    key: "status",
   },
   {
     header: "Action",
-    key:"action"
-  }
-]
+    key: "action",
+  },
+];
 
 export const COLUMNS_MEDICALRECORDS = [
   {
@@ -276,3 +275,73 @@ export const TYPES_Appointment = [
   { label: "ANT", value: "ANT" },
 ];
 
+export const COLUMNS_PATIENTS = [
+  {
+    header: "FullName",
+    key: "fullname",
+  },
+  {
+    header: "Register Date",
+    key: "register_date",
+  },
+  {
+    header: "Phone",
+    key: "phone",
+  },
+  {
+    header: "Email",
+    key: "email",
+  },
+  {
+    header: "Marital Status",
+    key: "marital_status",
+  },
+  {
+    header: "Status",
+    key: "status",
+  },
+
+  {
+    header: "Action",
+    key: "action",
+    className: "hidden md:table-cell",
+  },
+];
+
+export const COLUMNS_DOCTORS = [
+  {
+    header: "FullName",
+    key: "fullname",
+  },
+  {
+    header: "Specialiste",
+    key: "speacialiste",
+  },
+  {
+    header: "Register Date",
+    key: "register_date",
+  },
+  {
+    header: "Phone",
+    key: "phone",
+  },
+  {
+    header: "Email",
+    key: "email",
+  },
+  {
+    header: "Status",
+    key: "status",
+  },
+
+  {
+    header: "Action",
+    key: "action",
+    className: "hidden md:table-cell",
+  },
+];
+
+export const USER_STATUS_COLOR: Record<string, TVariants> = {
+  true: "error",
+  false: "success",
+};

@@ -3,15 +3,16 @@ import { routeAccess } from "./lib/routes";
 import {  NextResponse } from "next/server";
 
 const matchers = Object.keys(routeAccess).map((route) => ({
-  matcher: createRouteMatcher([route]),
-  allowedRoles: routeAccess[route],
+  matcher: createRouteMatcher([route]), // /admin(.*)
+  allowedRoles: routeAccess[route], // [Role.Admin]
 }));
 
 export default clerkMiddleware(async (auth, req) => {
   const { userId, sessionClaims } = await auth();
-  const url = new URL(req.url);
+  const url = new URL(req.url); 
+  console.log(url)
 
-  const role =
+  const routeBaseOnRole =
     userId && sessionClaims?.metadata?.role
       ? sessionClaims.metadata.role
       : userId
@@ -20,9 +21,12 @@ export default clerkMiddleware(async (auth, req) => {
   
   const matchingRoute = matchers.find(({ matcher }) => matcher(req));
 
-  if (matchingRoute && !matchingRoute.allowedRoles.includes(role!?.toUpperCase())) {
+  if (matchingRoute && !matchingRoute.allowedRoles.includes(routeBaseOnRole!?.toUpperCase())) {
     // Redirect unauthorized roles to their respective default pages
-    return NextResponse.redirect(new URL(`/${role}`, url.origin));
+    return NextResponse.redirect(new URL(`/${routeBaseOnRole}`, url.origin)); 
+    // role => admin, patient, doctor, nurse..
+    //url.origin =>'http://localhost:3000'
+
   }
 
   //continue if the user is authorized

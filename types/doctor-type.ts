@@ -5,4 +5,6 @@ interface IDoctor {
   img?: string | null;
   phone: string;
   email: string;
+  isArchived?:boolean | null;
+  created_at?:Date;
 }

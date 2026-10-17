@@ -81,6 +81,7 @@ model Patient {
   medical_consent          Boolean
   img                      String?
   colorCode                String?
+  isArchived               Boolean? @default(false)
 
   appointments             Appointment[]
   medical                  MedicalRecords[]
@@ -103,6 +104,7 @@ model Doctor {
   img                   String?
   colorCode             String?
   availability_status   String?
+  isArchived            Boolean? @default(false)
 
   type                  JOBTYPE @default(FULL)
   working_days          WorkingDays[]
@@ -139,6 +141,7 @@ model Staff {
   img           String?
   license_number String?
   colorCode      String?
+  isArchived    Boolean? @default(false)
 
   role          Role
   status        Status @default(ACTIVE)
@@ -159,7 +162,7 @@ model Appointment {
   note              String?
   patient           Patient  @relation(fields: [patient_id], references: [id], onDelete: Cascade)
   doctor            Doctor   @relation(fields: [doctor_id], references: [id],  onDelete:  Cascade)
-
+  isArchived        Boolean? @default(false)
   bills             Payment[]
   medical           MedicalRecords[]
 

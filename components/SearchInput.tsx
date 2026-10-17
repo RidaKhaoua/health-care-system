@@ -30,7 +30,7 @@ function SearchInput() {
       onChange={(e) => setSearch(e.target.value)}
       value={search}
       placeholder="search"
-      className=" border max-w-70 border-slate-200 bg-white! py-5! text-black!"
+      className=" border w-full border-slate-700 bg-white! py-5! text-black!"
     />
   );
 }

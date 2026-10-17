@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import Link from "next/link";
 import { NotepadText, Star } from "lucide-react";
